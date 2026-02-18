@@ -1,0 +1,85 @@
+# ChatPlugin Configuration
+# Version: 1.0.0
+
+# Debug mode - shows placeholder replacements in console
+debug: false
+
+chat:
+  local:
+    enabled: true
+    radius: 50              # Local chat radius in blocks
+    # Local chat format - supports all placeholders
+    format: "&eL &8| {PREFIX} &f{PLAYER} &8› &f{MESSAGE}"
+  global:
+    enabled: true
+    prefix: "!"            # Prefix for global messages
+    # Global chat format - supports all placeholders
+    format: "&cG &8| {PREFIX} &f{PLAYER} &8› &f{MESSAGE}"
+  use-luckperms-prefix: true  # Use LuckPerms prefix in {PREFIX} placeholder
+
+proxy:
+  velocity:
+    enabled: false
+    channel: "GLOBAL_CHAT"  # Velocity channel for cross-server global chat
+
+join:
+  play-sound: true        # Play sound when player joins
+  sound: "BLOCK_NOTE_BLOCK_BELL"
+
+leave:
+  play-sound: true        # Play sound when player leaves
+  sound: "BLOCK_NOTE_BLOCK_BASS"
+
+mention:
+  enabled: true
+  prefix: "@"
+  highlight-color: "&e"
+  sound: "BLOCK_NOTE_BLOCK_CHIME"
+
+# Anti-spam configuration
+anti-spam:
+  enabled: true
+  message-cooldown: 3         # Seconds between messages
+  duplicate-message-time: 30  # Seconds before allowing duplicate message
+  max-messages-per-minute: 10 # Maximum messages per minute
+  max-caps-percent: 50        # Maximum percentage of caps allowed
+  min-message-length: 3       # Minimum length to check for caps
+  block-duplicates: true      # Block duplicate messages
+  block-excessive-caps: true  # Block messages with too many caps
+  block-spam-chars: true      # Block spam characters
+  max-repeating-chars: 5      # Maximum repeating characters allowed
+  kick-after-warnings: 5      # Kick player after X warnings (0 to disable)
+
+# Placeholders that can be used in chat
+# Players can type :placeholder: and it will be replaced
+# Built-in placeholders:
+# :team: - Shows team name in green color (&a) with brackets
+# :item: - Shows item in hand
+# :loc: - Shows player location in yellow color (&e)
+# :x1234: - Shows marks from Marks plugin (if available)
+#
+# Format placeholders (available in chat formats):
+# {PLAYER} - Player name (always has hover info with click to message)
+# {PREFIX} - LuckPerms prefix (if enabled)
+# {MESSAGE} - The chat message
+# {WORLD} - Player's world
+# {X}, {Y}, {Z} - Player coordinates
+
+messages:
+  private:
+    outgoing: "&7[&6me &7-> &6{PLAYER}&7] &f"
+    incoming: "&7[&6{PLAYER} &7-> &6me&7] &f"
+  no-reply: "&cYou have no one to reply to!"
+  player-not-found: "&cPlayer '{PLAYER}' not found!"
+  no-permission: "&cYou don't have permission to use this command!"
+  log-private: false    # Log private messages to console
+
+commands:
+  roll:
+    format: "&6{PLAYER} &erolled a dice and got &6{RESULT}"
+    invalid-number: "&cPlease provide a number between 1 and 1000!"
+  coin:
+    format: "&eCoin toss result: &6{RESULT}"
+
+# Optional server name for proxy messaging
+server-name: ""
